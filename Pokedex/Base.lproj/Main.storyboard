@@ -40,6 +40,7 @@
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0Sk-Zb-WDM">
                                 <rect key="frame" x="20" y="130" width="335" height="517"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lME-ag-sz2">
                                     <size key="itemSize" width="105" height="105"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -70,6 +71,7 @@
                                                 </label>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="JoR-Ql-gm3" firstAttribute="leading" secondItem="lwo-bc-yJa" secondAttribute="leading" id="0M6-qG-55v"/>
                                             <constraint firstAttribute="bottom" secondItem="JoR-Ql-gm3" secondAttribute="bottom" constant="25" id="8Jn-pG-9jD"/>
@@ -109,6 +111,9 @@
                             <constraint firstAttribute="trailing" secondItem="Slf-Nv-4GR" secondAttribute="trailing" id="vfT-TL-SUI"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collection" destination="0Sk-Zb-WDM" id="QnQ-OD-ufW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
