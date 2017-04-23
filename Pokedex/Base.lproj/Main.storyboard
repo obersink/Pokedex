@@ -60,12 +60,15 @@
                                     <constraint firstAttribute="bottom" secondItem="If5-cI-Rsy" secondAttribute="bottom" constant="8" id="p1n-tA-0dt"/>
                                 </constraints>
                             </view>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Slf-Nv-4GR">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search Pokemon" translatesAutoresizingMaskIntoConstraints="NO" id="Slf-Nv-4GR">
                                 <rect key="frame" x="0.0" y="65" width="375" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="wkX-fe-afh"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="9tn-al-XoE"/>
+                                </connections>
                             </searchBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="CSg-sg-IOf">
                                 <rect key="frame" x="0.0" y="110" width="375" height="557"/>
@@ -120,6 +123,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="pxz-2T-sJp"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="WPF-f3-zfs"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -145,6 +152,7 @@
                     </view>
                     <connections>
                         <outlet property="collection" destination="0Sk-Zb-WDM" id="QnQ-OD-ufW"/>
+                        <outlet property="searchBar" destination="Slf-Nv-4GR" id="lNR-w8-N28"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
