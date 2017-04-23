@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8C19CFCF1EA9F9FD00A109C9 /* PokeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C19CFCE1EA9F9FD00A109C9 /* PokeCell.swift */; };
 		8C19D0141EAB106800A109C9 /* csv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C19D0131EAB106800A109C9 /* csv.swift */; };
+		8C19D0341EAC792A00A109C9 /* Pokemon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8C19D0331EAC792A00A109C9 /* Pokemon.ttf */; };
+		8C19D0381EAC7DB200A109C9 /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8C19D0371EAC7DB200A109C9 /* music.mp3 */; };
 		8CEC19491EA9722C00D4DE48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEC19481EA9722C00D4DE48 /* AppDelegate.swift */; };
 		8CEC194B1EA9722C00D4DE48 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEC194A1EA9722C00D4DE48 /* ViewController.swift */; };
 		8CEC194E1EA9722C00D4DE48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CEC194C1EA9722C00D4DE48 /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 /* Begin PBXFileReference section */
 		8C19CFCE1EA9F9FD00A109C9 /* PokeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokeCell.swift; sourceTree = "<group>"; };
 		8C19D0131EAB106800A109C9 /* csv.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = csv.swift; sourceTree = "<group>"; };
+		8C19D0331EAC792A00A109C9 /* Pokemon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pokemon.ttf; sourceTree = "<group>"; };
+		8C19D0371EAC7DB200A109C9 /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
 		8CEC19451EA9722C00D4DE48 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CEC19481EA9722C00D4DE48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CEC194A1EA9722C00D4DE48 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,10 +50,28 @@
 		8C19CFD01EA9FB0400A109C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8CEC19481EA9722C00D4DE48 /* AppDelegate.swift */,
 				8CEC194A1EA9722C00D4DE48 /* ViewController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		8C19D0351EAC793F00A109C9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8C19D0331EAC792A00A109C9 /* Pokemon.ttf */,
+				8CEC195C1EA9785400D4DE48 /* pokemon.csv */,
+				8C19D0371EAC7DB200A109C9 /* music.mp3 */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		8C19D0361EAC795E00A109C9 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				8CEC19481EA9722C00D4DE48 /* AppDelegate.swift */,
+				8C19D0131EAB106800A109C9 /* csv.swift */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 		8CEC193C1EA9722C00D4DE48 = {
@@ -74,10 +96,9 @@
 				8CEC195A1EA9723400D4DE48 /* Model */,
 				8CEC195B1EA9723C00D4DE48 /* View */,
 				8C19CFD01EA9FB0400A109C9 /* Controller */,
+				8C19D0351EAC793F00A109C9 /* Resources */,
+				8C19D0361EAC795E00A109C9 /* Util */,
 				8CEC194F1EA9722C00D4DE48 /* Assets.xcassets */,
-				8C19D0131EAB106800A109C9 /* csv.swift */,
-				8CEC195C1EA9785400D4DE48 /* pokemon.csv */,
-				8CEC19511EA9722C00D4DE48 /* LaunchScreen.storyboard */,
 				8CEC19541EA9722C00D4DE48 /* Info.plist */,
 			);
 			path = Pokedex;
@@ -94,6 +115,7 @@
 		8CEC195B1EA9723C00D4DE48 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8CEC19511EA9722C00D4DE48 /* LaunchScreen.storyboard */,
 				8CEC194C1EA9722C00D4DE48 /* Main.storyboard */,
 				8C19CFCE1EA9F9FD00A109C9 /* PokeCell.swift */,
 			);
@@ -161,7 +183,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C19D0341EAC792A00A109C9 /* Pokemon.ttf in Resources */,
 				8CEC19531EA9722C00D4DE48 /* LaunchScreen.storyboard in Resources */,
+				8C19D0381EAC7DB200A109C9 /* music.mp3 in Resources */,
 				8CEC19501EA9722C00D4DE48 /* Assets.xcassets in Resources */,
 				8CEC195D1EA9785400D4DE48 /* pokemon.csv in Resources */,
 				8CEC194E1EA9722C00D4DE48 /* Main.storyboard in Resources */,

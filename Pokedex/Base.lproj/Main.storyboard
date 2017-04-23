@@ -8,6 +8,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Pokemon.ttf">
+            <string>PokemonSolidNormal</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -23,9 +28,36 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EiS-Ep-SdU">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokedex" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="If5-cI-Rsy">
+                                        <rect key="frame" x="124.5" y="17" width="125" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="125" id="WhG-nZ-pWk"/>
+                                            <constraint firstAttribute="height" constant="40" id="obZ-2Z-cKR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PokemonSolidNormal" family="Pokemon Solid" pointSize="30"/>
+                                        <color key="textColor" red="0.99595016241073608" green="0.99619525671005249" blue="0.99164789915084839" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbK-Dd-n6R">
+                                        <rect key="frame" x="341" y="31" width="26" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="26" id="OHa-Wp-vfz"/>
+                                            <constraint firstAttribute="width" constant="26" id="h8P-5V-EGE"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="music"/>
+                                        <connections>
+                                            <action selector="musicBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WTz-oM-Xde"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="0.48722514510154724" green="0.76512908935546875" blue="0.96473681926727295" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="4Ma-WR-aSW"/>
+                                    <constraint firstAttribute="bottom" secondItem="mbK-Dd-n6R" secondAttribute="bottom" constant="8" id="4VT-KB-dZD"/>
+                                    <constraint firstItem="If5-cI-Rsy" firstAttribute="centerX" secondItem="EiS-Ep-SdU" secondAttribute="centerX" id="5k1-33-F2j"/>
+                                    <constraint firstAttribute="trailing" secondItem="mbK-Dd-n6R" secondAttribute="trailing" constant="8" id="HEK-Q2-2h5"/>
+                                    <constraint firstAttribute="bottom" secondItem="If5-cI-Rsy" secondAttribute="bottom" constant="8" id="p1n-tA-0dt"/>
                                 </constraints>
                             </view>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Slf-Nv-4GR">
@@ -117,11 +149,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+            <point key="canvasLocation" x="152.80000000000001" y="148.87556221889056"/>
         </scene>
     </scenes>
     <resources>
         <image name="1" width="120" height="120"/>
         <image name="bg" width="4160" height="2340"/>
+        <image name="music" width="100" height="100"/>
     </resources>
 </document>
