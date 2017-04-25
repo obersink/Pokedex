@@ -10,9 +10,18 @@ import UIKit
 
 class PokemonDetailVC: UIViewController {
 
-    var pokemon: Pokemon!
     
+    
+    var pokemon: Pokemon!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var pokemonIMG: UIImageView!
+    @IBOutlet weak var pokeInfo: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var defenseLabel: UILabel!
+    @IBOutlet weak var pokedexLabel: UILabel!
+    @IBOutlet weak var attackLabel: UILabel!
+    @IBOutlet weak var heightLabel: UILabel!
+    @IBOutlet weak var weightLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +29,9 @@ class PokemonDetailVC: UIViewController {
         
     }
 
+    @IBAction func backButtonPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
   
 
 }
