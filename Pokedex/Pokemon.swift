@@ -50,7 +50,7 @@ class Pokemon {
     func downloadPokemonDetail(completed: @escaping DownloadComplete) {
         
         Alamofire.request(self._pokemonURL).responseJSON { response in
-            if let dict = response.result.value as? Dictionary<String, AnyObject> {
+            if let dict = response.result.value as? [String: Any] {
                 if let weight = dict["weight"] as? String {
                     self._weight = weight
                 }
@@ -67,7 +67,7 @@ class Pokemon {
                     self._defense = "\(defense)"
                 }
                 
-                if let types = dict["types"] as? [Dictionary<String, String>] , types.count > 0 {
+                if let types = dict["types"] as? [[String: String]] , types.count > 0 {
                     if let t = types[0]["name"] {
                         self._type = t.capitalized
                     }
@@ -82,10 +82,10 @@ class Pokemon {
                     self._type = ""
                 }
                 
-                if let descriptions = dict["descriptions"] as? [Dictionary<String, String>] {
+                if let descriptions = dict["descriptions"] as? [[String: String]] {
                     if let descriptionURL = descriptions[0]["resource_uri"] {
                         Alamofire.request("\(URL_BASE)\(descriptionURL)").responseJSON { response in
-                            if let descJSON = response.result.value as? Dictionary<String, AnyObject> {
+                            if let descJSON = response.result.value as? [String: Any] {
                                 if let desc = descJSON["description"] as? String {
                                     self._description = desc
                                 }
@@ -95,7 +95,7 @@ class Pokemon {
                     }
                 }
                 
-                if let evolutions = dict["evolutions"] as? [Dictionary<String, AnyObject>] , evolutions.count > 0 {
+                if let evolutions = dict["evolutions"] as? [[String: Any]] , evolutions.count > 0 {
                     if let nextEvo = evolutions[0]["to"] as? String {
                         if nextEvo.range(of: "mega") == nil {
                             self._nextEvoName = nextEvo
@@ -114,13 +114,37 @@ class Pokemon {
                             }
                         }
                     }
-                    print(self.nextEvoID)
-                    print(self.nextEvoLevel)
-                    print(self.nextEvoName)
                 }
-                
             }
             completed()
         }
     }
+    
+    class func loadPokemon(completion: @escaping (_ pokemon: [Pokemon]) -> ()) {
+        let path = Bundle.main.path(forResource: "pokemon", ofType: "csv")!
+        DispatchQueue.global().async {
+            do {
+                //background
+                let csv = try CSV(contentsOfURL: path)
+                let rows = csv.rows
+                var pokemon = [Pokemon]()
+                for row in rows {
+                    let pokeID = Int(row["id"]!)!
+                    let name = row["identifier"]!
+                    
+                    let poke = Pokemon(name: name, id: pokeID)
+                    pokemon.append(poke)
+            
+                }
+                DispatchQueue.main.async {
+                    completion(pokemon)
+                }
+            }
+            catch let err as NSError {
+                print(err.debugDescription)
+            }
+        }
+    }
 }
+
+

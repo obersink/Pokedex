@@ -18,45 +18,33 @@ class PokemonVC: UIViewController {
     var filteredPokemon = [Pokemon]()
     
     var inSearchMode: Bool = false
-    var musicPlayer: AVAudioPlayer!
+    
+    lazy var musicPlayer: AVAudioPlayer = {
+        var player = AVAudioPlayer()
+        let path = Bundle.main.path(forResource: "music", ofType: "mp3")!
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player.prepareToPlay()
+            player.numberOfLoops = -1
+        }
+        catch {
+            fatalError("Error playing sound")
+        }
+        
+        return player
+    }()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.returnKeyType = UIReturnKeyType.done
-        parsePokemonCSV()
-        initAudio()
-    }
-    
-    func initAudio() {
-        let path = Bundle.main.path(forResource: "music", ofType: "mp3")!
-        do {
-            musicPlayer = try AVAudioPlayer(contentsOf: URL(string: path)!)
-            musicPlayer.prepareToPlay()
-            musicPlayer.numberOfLoops = -1
-            musicPlayer.play()
-        }
-        catch let err as NSError {
-            print(err.description)
-        }
-    }
-    
-    func parsePokemonCSV() {
-        let path = Bundle.main.path(forResource: "pokemon", ofType: "csv")!
-        do {
-            let csv = try CSV(contentsOfURL: path)
-            let rows = csv.rows
-            
-            for row in rows {
-                let pokeID = Int(row["id"]!)!
-                let name = row["identifier"]!
-                
-                let poke = Pokemon(name: name, id: pokeID)
-                pokemon.append(poke)
-            }
-        }
-        catch let err as NSError {
-            print(err.debugDescription)
+        musicPlayer.play()
+        
+        Pokemon.loadPokemon { [weak self] (pokemon) in
+            self?.pokemon = pokemon
+            self?.collection.reloadData()
         }
     }
     
