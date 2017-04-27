@@ -39,7 +39,7 @@ class PokemonDetailVC: UIViewController {
     }
     
     func updateUI() {
-        nameLabel.text = pokemon.name
+        nameLabel.text = pokemon.name.capitalized
         pokeInfo.text = pokemon.desc
         attackLabel.text = pokemon.attack
         defenseLabel.text = pokemon.defense

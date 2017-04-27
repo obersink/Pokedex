@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController {
+class PokemonVC: UIViewController {
 
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -83,7 +83,7 @@ class ViewController: UIViewController {
 }
 
 //MARK: COLLECTION VIEW
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension PokemonVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokeCell", for: indexPath) as? PokeCell {
@@ -132,13 +132,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 105, height: 105)
+        let size = view.frame.width / 3 - 20
+        return CGSize(width: size, height: size)
     }
     
 }
 
 //MARK: SEARCH BAR
-extension ViewController: UISearchBarDelegate {
+extension PokemonVC: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text == nil || searchBar.text == "" {
@@ -149,7 +150,7 @@ extension ViewController: UISearchBarDelegate {
             inSearchMode = true
             let lower = searchBar.text!.lowercased()
             //$0 is placeholder for object in array
-            filteredPokemon = pokemon.filter({$0.name.range(of: lower) != nil})
+            filteredPokemon = pokemon.filter({$0.name.range(of: lower) != nil}) 
         }
         collection.reloadData()
     }
