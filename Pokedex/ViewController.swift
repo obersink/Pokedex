@@ -49,7 +49,7 @@ class ViewController: UIViewController {
             
             for row in rows {
                 let pokeID = Int(row["id"]!)!
-                let name = row["identifier"]!.capitalized
+                let name = row["identifier"]!
                 
                 let poke = Pokemon(name: name, id: pokeID)
                 pokemon.append(poke)
@@ -143,7 +143,6 @@ extension ViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text == nil || searchBar.text == "" {
             inSearchMode = false
-            collection.reloadData()
             view.endEditing(true)
         }
         else{
@@ -151,9 +150,8 @@ extension ViewController: UISearchBarDelegate {
             let lower = searchBar.text!.lowercased()
             //$0 is placeholder for object in array
             filteredPokemon = pokemon.filter({$0.name.range(of: lower) != nil})
-            collection.reloadData()
         }
-        
+        collection.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
